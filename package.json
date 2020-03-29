@@ -1,0 +1,35 @@
+{
+  "name": "melembraai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon src/app.js",
+    "git-cz": "npx git-cz"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commitizen": "^4.0.3",
+    "dotenv": "^8.2.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "express": "^4.17.1",
+    "prettier": "^2.0.2",
+    "sucrase": "^3.13.0",
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "husky": "^4.2.3",
+    "nodemon": "^2.0.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
