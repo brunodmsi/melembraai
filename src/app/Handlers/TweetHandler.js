@@ -1,7 +1,8 @@
 import Twitter from 'twitter';
 import twitterConfig from '../../config/twitter';
 
-import expressions from '../../utils/expressions';
+import DateHandler from './DateHandler';
+import RegExHandler from './RegExHandler';
 
 class TweetHandler {
   constructor(client) {
@@ -21,6 +22,57 @@ class TweetHandler {
     ]);
 
     return tweets;
+  }
+
+  async replyTweet({ username, tweet_id, message }) {
+    let response = {};
+
+    await Promise.all([
+      this.client
+        .post('statuses/update', {
+          status: `@${username} ${message}`,
+          in_reply_to_status_id: tweet_id,
+        })
+        .then((res) => {
+          response = res;
+        })
+        .catch((err) => console.log(err)),
+    ]);
+
+    return response;
+  }
+
+  parseTweets(tweets) {
+    let parsedTweets = [];
+    for (let i = 0; i < tweets.length; i += 1) {
+      const {
+        id_str: tweet_id,
+        text: tweet_text,
+        user: { id: user_id, screen_name: username },
+      } = tweets[i];
+
+      const parser = RegExHandler.textToTimestamps(tweet_text);
+      const parsedDate = DateHandler.createNewDate(parser);
+
+      parsedTweets = [
+        ...parsedTweets,
+        {
+          tweet: {
+            id: tweet_id,
+            text: tweet_text,
+          },
+
+          parsed_date: parsedDate,
+
+          requester: {
+            id: user_id,
+            name: username,
+          },
+        },
+      ];
+    }
+
+    return parsedTweets;
   }
 }
 
