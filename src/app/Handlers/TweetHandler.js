@@ -14,7 +14,7 @@ class TweetHandler {
 
     await Promise.all([
       this.client
-        .get('statuses/mentions_timeline', { since_id })
+        .get('statuses/mentions_timeline', since_id ? { since_id } : {})
         .then((tweet) => {
           tweets = tweet;
         })
@@ -48,7 +48,7 @@ class TweetHandler {
       const {
         id_str: tweet_id,
         text: tweet_text,
-        user: { id: user_id, screen_name: username },
+        user: { id_str: user_id, screen_name: username },
       } = tweets[i];
 
       const parser = RegExHandler.textToTimestamps(tweet_text);
@@ -72,7 +72,7 @@ class TweetHandler {
       ];
     }
 
-    return parsedTweets;
+    return parsedTweets.reverse();
   }
 }
 
