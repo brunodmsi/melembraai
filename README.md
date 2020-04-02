@@ -1,6 +1,6 @@
 <p align="center">
-  <h1>Me Lembra Ai</h1>
-  <h4>Um bot para lembretes</h4>
+  <h1 align="center">Me Lembra Aí</h1>
+  <h4 align="center">Um bot para lembretes</h4>
 </p>
 
 ## :neutral_face: Qual o propósito?
@@ -12,17 +12,22 @@ Outro exemplo seria: o governo publicou no twitter que em x tempo ele vai fazer 
 
 Enfim, são muitos usos possíveis, e veja os prints abaixo para ver o funcionamento do bot na prática:
 Você primeiro faz o pedido de lembrete
+
 <img src="https://i.imgur.com/9brMtyx.png" alt="Pedido de mensagem" />
+
 E então o bot lhe responde afirmando a confirmação do recebimento desse pedido
+
 <img src="https://i.imgur.com/3rVZAuL.png" alt="Confirmação de recebimento" />
+
 E quando esse tempo chegar, o bot irá lhe enviar o seu lembrete tão aguardado
+
 <img src="https://i.imgur.com/nz2r3Jd.png" alt="Lembrete final" />
 
 ## :computer: Tecnologias usadas
 - [Node.js](https://nodejs.org/en/) - interpretador JavaScript
 - [Redis](https://redis.io/) - biblioteca que neste projeto está sendo usada para envio de tweets em segundo plano
 - [Sequelize](https://sequelize.org/) - ORM de bancos SQL para Node.js (neste projeto esta sendo usado Postgres)
-- []()
+- [date-fns](https://date-fns.org/) - biblioteca utilitária de datas, calendários, etc.
 
 ## :recycle: Como contribuir
 
