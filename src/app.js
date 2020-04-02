@@ -33,4 +33,4 @@ setInterval(async function () {
   }
 
   console.log(`${tweets.length} new mentions`);
-}, 60000);
+}, 2000);
