@@ -7,6 +7,7 @@ class Reminder extends Model {
         tweet: Sequelize.JSON,
         parsed_date: Sequelize.DATE,
         requester: Sequelize.JSON,
+        done: Sequelize.BOOLEAN,
       },
       {
         sequelize,
