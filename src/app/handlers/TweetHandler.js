@@ -49,10 +49,11 @@ class TweetHandler {
         id_str: tweet_id,
         text: tweet_text,
         user: { id_str: user_id, screen_name: username },
+        created_at,
       } = tweets[i];
 
       const parser = RegExHandler.textToTimestamps(tweet_text);
-      const parsedDate = DateHandler.createNewDate(parser);
+      const parsedDate = DateHandler.createNewDate(parser, created_at);
 
       parsedTweets = [
         ...parsedTweets,

@@ -10,17 +10,17 @@ import {
 import ptBR from 'date-fns/locale/pt-BR';
 
 class DateHandler {
-  createNewDate(parsedTime) {
-    let parsedDate = new Date();
+  createNewDate(parsedTime, tweetCreatedAt) {
+    let date = new Date(tweetCreatedAt);
 
-    parsedDate = addDays(parsedDate, parsedTime.days);
-    parsedDate = addHours(parsedDate, parsedTime.hours);
-    parsedDate = addMonths(parsedDate, parsedTime.months);
-    parsedDate = addYears(parsedDate, parsedTime.years);
-    parsedDate = addMinutes(parsedDate, parsedTime.minutes);
-    parsedDate = setSeconds(parsedDate, 0);
+    date = addDays(date, parsedTime.days);
+    date = addHours(date, parsedTime.hours);
+    date = addMonths(date, parsedTime.months);
+    date = addYears(date, parsedTime.years);
+    date = addMinutes(date, parsedTime.minutes);
+    date = setSeconds(date, 0);
 
-    return parsedDate;
+    return date;
   }
 
   formatResponseDate(rawDate) {
