@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon src/app.js",
+    "queue:dev": "nodemon src/queue.js",
     "git-cz": "npx git-cz"
   },
   "author": "",
