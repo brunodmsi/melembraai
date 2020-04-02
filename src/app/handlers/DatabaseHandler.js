@@ -1,9 +1,11 @@
+import { Op } from 'sequelize';
+
 import Reminder from '../models/Reminder';
 
 class DatabaseHandler {
   async fetchLatest() {
     const latest = await Reminder.findOne({
-      order: [['created_at', 'desc']],
+      order: [['id', 'desc']],
     });
 
     return latest;
@@ -18,9 +20,29 @@ class DatabaseHandler {
           tweet,
           parsed_date,
           requester,
+          done: false,
         });
       }),
     ]);
+  }
+
+  async getReminders() {
+    const reminders = await Reminder.findAll({
+      where: {
+        done: false,
+        parsed_date: {
+          [Op.lt]: new Date(),
+        },
+      },
+    });
+
+    return reminders;
+  }
+
+  async setAsDone(id) {
+    const reminder = await Reminder.findOne({ where: { id } });
+
+    await reminder.update({ done: true });
   }
 }
 
