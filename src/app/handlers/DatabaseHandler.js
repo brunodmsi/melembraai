@@ -15,12 +15,13 @@ class DatabaseHandler {
     if (objects.length === 0) return;
 
     await Promise.all([
-      objects.map(async ({ tweet, parsed_date, requester }) => {
+      objects.map(async ({ tweet, parsed_date, error, requester }) => {
         await Reminder.create({
           tweet,
           parsed_date,
           requester,
-          done: false,
+          error: !!error,
+          done: !!error,
         });
       }),
     ]);
@@ -30,6 +31,7 @@ class DatabaseHandler {
     const reminders = await Reminder.findAll({
       where: {
         done: false,
+        error: false,
         parsed_date: {
           [Op.lt]: new Date(),
         },

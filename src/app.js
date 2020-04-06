@@ -11,17 +11,23 @@ setInterval(async function () {
   const latest = await DatabaseHandler.fetchLatest();
   const tweets = await TweetHandler.fetchNewTweets(latest && latest.tweet.id);
 
+  console.log(`Time: ${new Date()}`);
   console.log(`${tweets.length} new mentions`);
 
   if (tweets.length > 0) {
-    const parsedTweets = TweetHandler.parseTweets(tweets);
+    const { parsedTweets } = TweetHandler.parseTweets(tweets);
 
     const sender = [];
-    parsedTweets.forEach(({ tweet, requester, parsed_date }) => {
+    parsedTweets.forEach(({ tweet, requester, error, parsed_date }) => {
       const date = DateHandler.formatResponseDate(parsed_date);
+
+      const message = error
+        ? 'Desculpe, eu não consegui entender. Verifique se esta tudo certinho, se nao, veja o guia de uso deste twitter aqui: xxx'
+        : `Ok! Seu lembrete foi agendado para ${date}! Até lá!`;
+
       sender.push(
         Queue.add(SendTweet.key, {
-          message: `Ok! Seu lembrete foi agendado para ${date}! Até lá!`,
+          message,
           reminder: {
             tweet,
             requester,

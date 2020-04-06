@@ -5,8 +5,8 @@ import DateHandler from './DateHandler';
 import RegExHandler from './RegExHandler';
 
 class TweetHandler {
-  constructor(client) {
-    this.client = client;
+  constructor() {
+    this.client = Twitter(twitterConfig);
   }
 
   async fetchNewTweets(since_id) {
@@ -53,6 +53,10 @@ class TweetHandler {
       } = tweets[i];
 
       const parser = RegExHandler.textToTimestamps(tweet_text);
+      const isUnvalid = Object.keys(parser)
+        .map((key) => parser[key] !== 0)
+        .every((value) => value === false);
+
       const parsedDate = DateHandler.createNewDate(parser, created_at);
 
       parsedTweets = [
@@ -63,7 +67,10 @@ class TweetHandler {
             text: tweet_text,
           },
 
-          parsed_date: parsedDate,
+          error: isUnvalid,
+          done: !!isUnvalid,
+
+          parsed_date: isUnvalid ? new Date() : parsedDate,
 
           requester: {
             id: user_id,
@@ -73,8 +80,8 @@ class TweetHandler {
       ];
     }
 
-    return parsedTweets.reverse();
+    return { parsedTweets: parsedTweets.reverse() };
   }
 }
 
-export default new TweetHandler(Twitter(twitterConfig));
+export default new TweetHandler();

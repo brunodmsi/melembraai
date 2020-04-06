@@ -8,6 +8,7 @@ class Reminder extends Model {
         parsed_date: Sequelize.DATE,
         requester: Sequelize.JSON,
         done: Sequelize.BOOLEAN,
+        error: Sequelize.BOOLEAN,
       },
       {
         sequelize,
