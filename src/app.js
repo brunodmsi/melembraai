@@ -15,7 +15,7 @@ setInterval(async function () {
   console.log(`${tweets.length} new mentions`);
 
   if (tweets.length > 0) {
-    const { parsedTweets } = TweetHandler.parseTweets(tweets);
+    const parsedTweets = TweetHandler.parseTweets(tweets);
 
     const sender = [];
     parsedTweets.forEach(({ tweet, requester, error, parsed_date }) => {

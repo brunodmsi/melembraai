@@ -80,7 +80,7 @@ class TweetHandler {
       ];
     }
 
-    return { parsedTweets: parsedTweets.reverse() };
+    return parsedTweets.reverse();
   }
 }
 
