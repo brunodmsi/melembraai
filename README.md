@@ -1,6 +1,27 @@
+<h1 align="center">
+  Me Lembra Aí
+</h1>
+
+<h4 align="center">
+  Um bot para lembretes
+</h4>
+
 <p align="center">
-  <h1 align="center">Me Lembra Aí</h1>
-  <h4 align="center">Um bot para lembretes</h4>
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/brunodmsi/melembraai">
+
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/brunodmsi/melembraai">
+
+  <a href="https://github.com/brunodmsi/melembraai/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/brunodmsi/melembraai">
+  </a>
+
+  <a href="https://github.com/brunodmsi/melembraai/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/brunodmsi/melembraai">
+  </a>
+
+  <a href="https://github.com/brunodmsi/melembraai/blob/master/LICENSE">
+    <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
+  </a>
 </p>
 
 ## :neutral_face: Qual o propósito?
