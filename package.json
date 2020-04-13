@@ -6,6 +6,8 @@
   "scripts": {
     "start:dev": "nodemon src/app.js",
     "queue:dev": "nodemon src/queue.js",
+    "build": "sucrase ./src -d ./dist --transforms imports",
+    "start": "node dist/server.js",
     "git-cz": "npx git-cz"
   },
   "author": "",
